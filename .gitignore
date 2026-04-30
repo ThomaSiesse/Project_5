@@ -1,0 +1,13 @@
+# Données
+*.csv
+
+# Mot de passe
+.env
+
+# Python
+__pycache__/
+
+# Environnement virtuel
+venv/
+.venv/
+.qodo
