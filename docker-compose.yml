@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - mongo_data:/data/db
+  migration:
+    build: .
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - mongo
+volumes:
+  mongo_data:
+  csv_data:
