@@ -7,6 +7,7 @@ WORKDIR /app
 #Copie les fichiers utilies pour la migration dans le conteneur
 COPY scripts/migrate.py .
 COPY requirements.txt .
+COPY data/healthcare_dataset.csv /app/data/
 #Installation des dépendances nécessaires pour la migration
 RUN pip install -r requirements.txt
 #commande au démarrage

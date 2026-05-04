@@ -6,10 +6,11 @@ services:
   migration:
     build: .
     volumes:
-      - ./data:/app/data
+      - csv_data:/app/data
     depends_on:
       - mongo
     environment:
       - MONGODB_URI=mongodb://mongo:27017
 volumes:
   mongo_data:
+  csv_data:
