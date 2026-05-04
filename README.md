@@ -71,3 +71,8 @@ Les tests suivants sont effectués avant et après la migration :
 - **Dates** : Date of Admission < Discharge Date
 - **Billing Amount** : valeur non nul
 - **Room Number** : valeur > 0
+
+## Note
+
+Le fichier CSV n'est pas versionné pour des raisons de confidentialité.
+Placer le fichier `healthcare_dataset.csv` dans le dossier `data/` avant de lancer le build Docker.
