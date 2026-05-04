@@ -4,13 +4,14 @@ from datetime import datetime
 from dotenv import load_dotenv
 from os import getenv   
 
-
+# Functions Nettoyage données format object
 def clean_strings(df):
     for col in df.columns:
         if df[col].dtype == 'object':
             df[col] = df[col].str.strip().str.title()
     return df
 
+#Fonctions Nettoyage données format numérique et date
 def clean_data(df):
     
     df['Age'] = pd.to_numeric(df['Age'], errors='coerce').astype('Int64')
@@ -19,6 +20,7 @@ def clean_data(df):
     df['Discharge Date'] = pd.to_datetime(df['Discharge Date'], errors='coerce')
     df['Room Number'] = pd.to_numeric(df['Room Number'], errors='coerce').astype('Int64')
     return df
+#Fonction Validation données
 def validate_data(df):
     if ((df['Age'] > 0) & (df['Age'] < 150)).all():
         print ("✅ Age is valid ")
@@ -45,14 +47,22 @@ def validate_data(df):
     else:
         print ("❌ Room Number is invalid")
 
+#Fonction de migration vers Mongo DB
 def migrate(df, collection):
+    collection.delete_many({}) #supprimme les doublons avant migration
     for col in df.columns:
         if (df[col].dtype == 'datetime64[ns]'):
             df[col] = df[col].dt.apply(lambda x: x.to_pydatetime())
     records = df.to_dict(orient='records')
     collection.insert_many(records)
+    collection.create_index("Name")
+    collection.create_index("Date of Admission")
+    collection.create_index("Doctor")
+    collection.create_index("Hospital")
+    collection.create_index("Admission Type")
     print(f"✅ {len(records)} records migrated successfully!")
 
+#Execution du script
 if __name__ == "__main__":
     #Load .env
     load_dotenv()
@@ -73,7 +83,7 @@ if __name__ == "__main__":
 
     # Migrate data
     migrate(df, collection)
-
+    
     # Validate data in MongoDB
     records_mongo = list(collection.find({}, {'_id': 0}))
     df_mongo = pd.DataFrame(records_mongo)

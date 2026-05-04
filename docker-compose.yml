@@ -9,6 +9,7 @@ services:
       - ./data:/app/data
     depends_on:
       - mongo
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017
 volumes:
   mongo_data:
-  csv_data:
