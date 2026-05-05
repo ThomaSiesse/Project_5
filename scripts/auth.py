@@ -4,9 +4,8 @@ from os import getenv
 from dotenv import load_dotenv
 
 # Fonction pour créer l'utilisateur
-def create_user():
+def create_user(username):
     # Collecte des informations de l'utilisateur
-    username = input("Entrez le nom d'utilisateur : ")
     password = input("Entrez le mot de passe : ")
     role = input("Entrez le rôle (admin/developer/doctor/medical staff):")
 
@@ -20,9 +19,8 @@ def create_user():
 
     print("✅ User created successfully!")
 
-def login():
+def login(username):
     # Collecte des informations de l'utilisateur
-    username = input("Entrez votre nom d'utilisateur : ")
     password = input("Entrez votre mot de passe : ")
 
     # Récupération de l'utilisateur depuis MongoDB
@@ -30,12 +28,13 @@ def login():
     users_collection = db['users']
     user = users_collection.find_one({'username': username})
     #vérifie si l'utilisateur existe et si le mot de passe correspond
-    if user and bcrypt.checkpw(password.encode('utf-8'), user['password']):
-        print(f"✅ Login successful! Welcome {username} with role {user['role']}.")
-        return user['role']
-    else:
-        print("❌ Invalid username or password.")
-        return None
+    while True:
+        if user and bcrypt.checkpw(password.encode('utf-8'), user['password']):
+            print(f"✅ Login successful! Welcome {username} with role {user['role']}.")
+            return user['role']
+        else:
+            print("❌ Invalid username or password.")
+            return None
 #Fonction de vérification des permissions
 def check_permissions(role,action):
     #permission
@@ -53,10 +52,21 @@ def get_db():
     uri = getenv("MONGODB_URI")
     client = MongoClient(uri, tlsAllowInvalidCertificates=True)
     return client['healthcare']
-
+#Execution du script
 if __name__ == "__main__":
-    load_dotenv()
-    create_user()
-    role = login()
-    if role:
-        check_permissions(role, 'read')
+    load_dotenv() #charge les données
+    db = get_db() #connection à la base de données
+    users_collection = db['users'] #accès à la collection des utilisateurs
+    username = input("Entrez votre nom d'utilisateur: ") 
+    print(username)
+    user = users_collection.find_one({'username': username})
+    print(user)
+    if user:
+        print("✅ Utilisateur trouvé - login")
+        role = login(username)
+    else:
+        print("❌ Utilisateur non trouvé - création")
+        create_user(username)
+        role = login(username)
+        if role:
+            check_permissions(role, 'read')
