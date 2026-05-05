@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 import bcrypt
 from os import getenv
+from dotenv import load_dotenv
 
 # Fonction pour créer l'utilisateur
 def create_user():
@@ -52,3 +53,19 @@ def get_db():
     uri = getenv("MONGODB_URI")
     client = MongoClient(uri, tlsAllowInvalidCertificates=True)
     return client['healthcare']
+#Execution du script
+if __name__ == "__main__":
+    load_dotenv() #charge les données
+    db = get_db() #connection à la base de données
+    users_collection = db['users'] #accès à la collection des utilisateurs
+    username = input("Entrez votre nom d'utilisateur: ")
+    user = users_collection.find_one({'username': username})
+    if user:
+        role = login()
+        if role:
+            check_permissions(role, 'read')
+    else:
+        create_user()
+        role = login()
+        if role:
+            check_permissions(role, 'read')
