@@ -1,0 +1,16 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="GThvt1P_O1fdJtYKRoap">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aA4LauyuGNwwHkLUjJl1-1" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="healthcare" vertex="1">
+          <mxGeometry height="260" width="190" x="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="aA4LauyuGNwwHkLUjJl1-2" parent="aA4LauyuGNwwHkLUjJl1-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="+ name: VARCHAR&lt;div&gt;+ age: INT&lt;/div&gt;&lt;div&gt;+ gender: VARCHAR&lt;/div&gt;&lt;div&gt;+bloodType: VARCHAR&lt;/div&gt;&lt;div&gt;+ medicalCondition: VARCHAR&lt;/div&gt;&lt;div&gt;+ dateOfAdmission: DATE&lt;/div&gt;&lt;div&gt;+ doctor: VARCHAR&lt;/div&gt;&lt;div&gt;+ hospital: VARCHAR&lt;/div&gt;&lt;div&gt;+ insuranceProvider: VARCHAR&lt;/div&gt;&lt;div&gt;+ billingAmout: INT&amp;nbsp;&lt;/div&gt;&lt;div&gt;+roomNumber: INT&lt;/div&gt;&lt;div&gt;+admissionType: VARCHAR&lt;/div&gt;&lt;div&gt;+ dischargeDate: DATE&lt;/div&gt;&lt;div&gt;+ medication: VARCHAR&lt;/div&gt;&lt;div&gt;+ testResults: VARCHAR&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="190" y="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
