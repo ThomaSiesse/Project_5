@@ -76,3 +76,33 @@ Les tests suivants sont effectués avant et après la migration :
 
 Le fichier CSV n'est pas versionné pour des raisons de confidentialité.
 Placer le fichier `healthcare_dataset.csv` dans le dossier `data/` avant de lancer le build Docker.
+
+## Historique du développement
+
+1. Mise en place de la structure du projet
+2. Script de migration et tests d'intégrité
+3. Dockerfile
+4. Docker-compose avec volumes
+5. Réseau nommé et finalisation
+
+## Authentification
+
+### Fonctionnement
+
+auth.py permet de s'identifier et de définir les droit de base CRUD que l'on peut faire
+
+1. Demande l'username
+2. Si il existe alors demande le mot de passe
+3. Si il n'existe pas demande de créer un mot de passe et de définir un rôle.
+4. Valide l'authentification
+
+### Rôles et permissions
+
+admin: Create / Read / update
+doctor: Create / Read / update
+medical_staff: Read
+developer: Create / Read / update / Delete
+
+### Sécurité
+
+Les mots de passe sont hachés avec **bcrypt** avant d'être stockés dans MongoDB — ils ne sont jamais stockés en clair.
