@@ -58,7 +58,6 @@ if __name__ == "__main__":
     db = get_db() #connection à la base de données
     users_collection = db['users'] #accès à la collection des utilisateurs
     username = input("Entrez votre nom d'utilisateur: ") 
-    print(username)
     user = users_collection.find_one({'username': username})
     print(user)
     if user:

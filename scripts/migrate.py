@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     # Connect to MongoDB
     uri = getenv("MONGODB_URI")
-    client = MongoClient(uri, tlsAllowInvalidCertificates=True)
+    client = MongoClient(uri)
     db = client['healthcare']
     collection = db['patients']
 

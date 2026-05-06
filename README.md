@@ -74,7 +74,6 @@ Les tests suivants sont effectués avant et après la migration :
 
 ## Note
 
-Le fichier CSV n'est pas versionné pour des raisons de confidentialité.
 Placer le fichier `healthcare_dataset.csv` dans le dossier `data/` avant de lancer le build Docker.
 
 ## Historique du développement
