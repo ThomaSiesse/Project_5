@@ -50,7 +50,7 @@ def check_permissions(role,action):
 #connection MongoDB
 def get_db():
     uri = getenv("MONGODB_URI")
-    client = MongoClient(uri, tlsAllowInvalidCertificates=True)
+    client = MongoClient(uri)
     return client['healthcare']
 #Execution du script
 if __name__ == "__main__":
