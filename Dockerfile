@@ -1,7 +1,7 @@
 #image de base - python 3.13 slim(pour une image légère)
 FROM python:3.13-slim
 #metadata de l'image (description, version, author)
-LABEL description="Migration Scipts" version="1.0" author="Thomas S"
+LABEL description="Migration Scripts" version="1.0" author="Thomas S"
 #Dossier de travail dans le conteneur
 WORKDIR /app
 #Copie les fichiers utilies pour la migration dans le conteneur
