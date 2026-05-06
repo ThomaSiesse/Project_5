@@ -2,11 +2,12 @@
 
 ## 1. Différence entre un ordinateur et un serveur
 
-| | Ordinateur | Serveur
-| Disponibilité | Sur le temps d'usage | Tourne 24/7
-| Usage | Sert 1 utilisateur | Sert plusieurs utilisateurs
-| Stockage | Limité au disque dur | Beaucoup plus large et fiable
-| Réseau | Réseau local | on-premise ou cloud
+|               | Ordinateur           | Serveur                       |
+| ------------- | -------------------- | ----------------------------- |
+| Disponibilité | Sur le temps d'usage | Tourne 24/7                   |
+| Usage         | Sert 1 utilisateur   | Sert plusieurs utilisateurs   |
+| Stockage      | Limité au disque dur | Beaucoup plus large et fiable |
+| Réseau        | Réseau local         | on-premise ou cloud           |
 
 ## 2. Pourquoi le cloud
 
