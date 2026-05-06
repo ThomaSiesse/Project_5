@@ -3,6 +3,8 @@ services:
     image: mongo
     volumes:
       - mongo_data:/data/db
+    networks:
+      - healthcare-network
   migration:
     build: .
     volumes:
@@ -11,6 +13,12 @@ services:
       - mongo
     environment:
       - MONGODB_URI=mongodb://mongo:27017
+    networks:
+      - healthcare-network
+
 volumes:
   mongo_data:
   csv_data:
+
+networks:
+  healthcare-network:
